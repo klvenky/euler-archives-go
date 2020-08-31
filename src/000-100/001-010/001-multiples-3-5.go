@@ -19,7 +19,7 @@ func main() {
 		if i%3 == 0 || i%5 == 0 {
 			sum += i
 		}
-		i += 1
+		i++
 	}
 
 	fmt.Printf("Sum of natural number below 100 that are multiples of 3 and 5 is %d \n", sum)
