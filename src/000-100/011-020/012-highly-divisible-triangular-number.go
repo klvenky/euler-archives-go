@@ -22,6 +22,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -29,29 +30,27 @@ func isFactor(n int, factor int) bool {
 	return (n % factor) == 0
 }
 
-func getTriangularNumber(prev int, n int) int {
-	return prev + n
-}
-
 func main() {
-	// maxFactors := 5
-	maxFactors := 200
 	start := time.Now()
+	// maxFactors := 5
+	maxFactors := 500
+
 	prev := 0
 	for index := 1; ; index++ {
-		triangularNumber := getTriangularNumber(prev, index)
+		triangularNumber := prev + index
 		prev = triangularNumber
 		factors := 2
-		for factor := 2; factor < triangularNumber; factor++ {
+		squareRoot := int(math.Sqrt(float64(triangularNumber)))
+		for factor := 2; factor < squareRoot; factor++ {
 			if isFactor(triangularNumber, factor) {
-				factors++
+				factors += 2
 			}
+
 		}
-		// fmt.Printf("index: %d Triangular Number: %d Factors: %d\n", i, triangularNumber, factors)
 		if factors > maxFactors {
 			taken := time.Since(start)
 			fmt.Println("took ", taken)
-			fmt.Printf("First Triangular Number with %d divisors is %d\n", maxFactors, triangularNumber)
+			fmt.Printf("First Triangular Number with %d divisors is %d\nindex: %d\n", maxFactors, triangularNumber, index)
 			break
 		}
 	}
