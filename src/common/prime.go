@@ -1,25 +1,31 @@
 package main
 
 import (
-	"fmt"
 	"math"
 )
 
-func isPrime(n int32) bool {
+func isPrime(n int) bool {
 	out := false
 	if n == 2 {
 		out = true
 	} else if (n % 2) == 0 {
-		fmt.Println("n is 2")
 		out = false
 	} else if n < 2 {
 		out = false
-		fmt.Println("n is lessthan 2")
 	} else {
-		fmt.Println("in else")
-		max := math.Sqrt(float64(n))
-		fmt.Printf("printed %f", max)
+		max := int(math.Sqrt(float64(n)))
+		factors := 1
+		for factor := 2; factor < max+1; factor = factor + 1 {
+			if n%factor == 0 {
+				factors++
+			}
+			if factors > 1 {
+				break
+			}
+		}
+		if factors < 2 {
+			out = true
+		}
 	}
-	fmt.Println(out)
 	return out
 }
