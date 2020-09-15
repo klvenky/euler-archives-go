@@ -12,8 +12,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/klvenky/euler-archives-go/src/common"
 	"math/big"
+
+	"github.com/klvenky/euler-archives-go/src/common"
 )
 
 func factorial(number int64) big.Int {
@@ -37,5 +38,5 @@ func main() {
 	var n int64 = 100
 	fact := factorial(n)
 	fmt.Println(&fact)
-	fmt.Printf("Sum of digits in factorial(%d) is %d\n", n, common.DigitSum(fact))
+	fmt.Printf("Sum of digits in factorial(%d) is %d\n", n, common.BigNumberDigitSum(fact))
 }

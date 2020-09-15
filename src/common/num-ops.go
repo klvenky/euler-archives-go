@@ -38,8 +38,8 @@ func IsFactor(n int, factor int) bool {
 	return (n % factor) == 0
 }
 
-// DigitSum adds the individual digits of a long number
-func DigitSum(value big.Int) big.Int {
+// BigNumberDigitSum adds the individual digits of a long number
+func BigNumberDigitSum(value big.Int) big.Int {
 	sum := new(big.Int)
 	sum.SetUint64(0)
 	zero := new(big.Int)
@@ -59,8 +59,8 @@ func DigitSum(value big.Int) big.Int {
 	return *sum
 }
 
-// CalculatePower takes the root and the power to calculate
-func CalculatePower(number uint64, power uint64) big.Int {
+// CalculateBigPower takes the root and the power to calculate
+func CalculateBigPower(number uint64, power uint64) big.Int {
 	bigNum := new(big.Int)
 	bigNum.SetUint64(number)
 	powerBig := new(big.Int)
