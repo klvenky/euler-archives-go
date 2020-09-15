@@ -8,12 +8,10 @@ What is the smallest positive number that is evenly divisible by all of the numb
 */
 import (
 	"fmt"
+	"github.com/klvenky/euler-archives-go/src/common"
 	"time"
 )
 
-func isFactor(n int, factor int) bool {
-	return (n % factor) == 0
-}
 func main() {
 	// maxInt := 10
 	maxInt := 20
@@ -25,7 +23,7 @@ func main() {
 			continue
 		}
 		for j := 1; j <= maxInt; j++ {
-			if isFactor(i, j) {
+			if common.IsFactor(i, j) {
 				count++
 			} else {
 				break
