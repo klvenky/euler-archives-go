@@ -20,7 +20,7 @@ func main() {
 	var power uint64 = 1000
 	two := new(big.Int)
 	two.SetUint64(2)
-	value := common.CalculateBigPower(2, power)
-	sum := common.BigNumberDigitSum(value)
+	value := common.CalculatePower(2, power)
+	sum := common.DigitSum(value)
 	fmt.Printf("Sum of digits of 2^%d is %s\n", power, sum.Text(10))
 }

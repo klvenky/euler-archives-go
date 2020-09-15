@@ -38,5 +38,5 @@ func main() {
 	var n int64 = 100
 	fact := factorial(n)
 	fmt.Println(&fact)
-	fmt.Printf("Sum of digits in factorial(%d) is %d\n", n, common.BigNumberDigitSum(fact))
+	fmt.Printf("Sum of digits in factorial(%d) is %d\n", n, common.DigitSum(fact))
 }
