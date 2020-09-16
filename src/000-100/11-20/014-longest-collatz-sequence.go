@@ -27,7 +27,6 @@ func getCollatzSequenceLength(n int) int {
 	next := n
 	length := 0
 	for i := next; i != 1; {
-		// fmt.Println(i, next)
 		if i%2 == 0 {
 			i = i / 2
 		} else {
@@ -43,7 +42,6 @@ func main() {
 	result := 0
 	start := time.Now()
 	for seqStartNum := 1; seqStartNum < max; seqStartNum++ {
-		// seqStartNum := 13
 		length := getCollatzSequenceLength(seqStartNum)
 		if length > longestSeq {
 			longestSeq = length
