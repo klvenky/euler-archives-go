@@ -59,26 +59,6 @@ func DigitSum(value big.Int) big.Int {
 	}
 	return *sum
 }
-func GetDigits(number big.Int) []int {
-	var nums []int
-	zero := new(big.Int)
-	zero.SetUint64(0)
-	ten := new(big.Int)
-	ten.SetUint64(10)
-	one := new(big.Int)
-	one.SetUint64(1)
-	tmp := new(big.Int)
-	tmp.SetUint64(0)
-	tmp = tmp.Add(tmp, &number)
-	for i := tmp; i.Cmp(zero) > 0; {
-		rem := new(big.Int)
-		_, rem = i.DivMod(i, ten, rem)
-		v, _ := strconv.Atoi(rem.Text(10))
-		nums = append(nums, v)
-	}
-
-	return nums
-}
 
 // CalculatePower takes the root and the power to calculate
 func CalculatePower(number uint64, power uint64) big.Int {
@@ -106,7 +86,14 @@ func CalculatePower(number uint64, power uint64) big.Int {
 
 func FindDigitCount(number big.Int) big.Int {
 	count := new(big.Int)
-	count.SetUint64(0)
+	digits := GetDigits(number)
+	count.SetInt64(int64(len(digits)))
+	return *count
+}
+
+// GetDigits gives an array of integers that are part of a supplied bigInt number
+func GetDigits(number big.Int) []int {
+	var nums []int
 	zero := new(big.Int)
 	zero.SetUint64(0)
 	ten := new(big.Int)
@@ -118,12 +105,10 @@ func FindDigitCount(number big.Int) big.Int {
 	tmp = tmp.Add(tmp, &number)
 	for i := tmp; i.Cmp(zero) > 0; {
 		rem := new(big.Int)
-		q := new(big.Int)
-		q, rem = i.DivMod(i, ten, rem)
-		count.Add(count, one)
-		// fmt.Println("quotient: ", q, "\tRemainder:", rem, "\tDividend:", i, "\t count:", count)
-		i = q
+		_, rem = i.DivMod(i, ten, rem)
+		v, _ := strconv.Atoi(rem.Text(10))
+		nums = append(nums, v)
 	}
-	// fmt.Println("returning from counter for ", number, " as ", count, "\n")
-	return *count
+
+	return nums
 }

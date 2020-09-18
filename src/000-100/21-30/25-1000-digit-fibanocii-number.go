@@ -27,8 +27,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/klvenky/euler-archives-go/src/common"
 	"math/big"
+
+	"github.com/klvenky/euler-archives-go/src/common"
 )
 
 func main() {
