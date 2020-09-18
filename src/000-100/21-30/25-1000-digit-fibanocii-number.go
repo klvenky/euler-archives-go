@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	maxLength := "1000"
+	maxLength := 1000
 	a := new(big.Int)
 	a.SetUint64(0)
 	b := new(big.Int)
@@ -42,26 +42,17 @@ func main() {
 	for quit := false; quit != true; {
 		index += 1
 		count := common.FindDigitCount(*b)
-		countStr := count.Text(10)
 		tmp := new(big.Int)
 		tmp.SetUint64(0)
-		match := maxLength == countStr
+		match := maxLength == count
 		if match == true {
 			quit = true
 			break
 		}
-
-		// fmt.Println("a: ", a, "\tb: ", b, "\ttmp:", tmp, "\tlength:", countStr, "\t matched: ", match)
-
-		// fmt.Println("tmp init done ", tmp)
 		tmp.Add(tmp, b)
-		// fmt.Println("tmp added b done ", tmp)
 		tmp.Add(tmp, a)
-		// fmt.Println("tmp added a done ", tmp)
 		a = b
 		b = tmp
-		// fmt.Println("After manipulation a: ", a, "\tb:", b)
-
 	}
-	fmt.Printf("The first Fibanocii number of length %s is at the index is %d\n", maxLength, index)
+	fmt.Printf("The first Fibanocii number of length %d is at the index is %d\n", maxLength, index)
 }

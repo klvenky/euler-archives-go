@@ -10,17 +10,15 @@ package main
 
 import (
 	"fmt"
-	"math/big"
 
 	"github.com/klvenky/euler-archives-go/src/common"
 )
 
 func main() {
 	// var power uint64 = 15
+	var index uint64 = 2
 	var power uint64 = 1000
-	two := new(big.Int)
-	two.SetUint64(2)
-	value := common.CalculatePower(2, power)
-	sum := common.DigitSum(value)
-	fmt.Printf("Sum of digits of 2^%d is %s\n", power, sum.Text(10))
+	calculatedPowerVal := common.CalculatePower(index, power)
+	sum := common.DigitSum(calculatedPowerVal)
+	fmt.Printf("Sum of digits of 2^%d is %d\n", power, sum)
 }

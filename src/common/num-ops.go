@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-// IsPrime Checks if a function is prime or not
+// IsPrime Checks if the input number is prime or not
 func IsPrime(n int) bool {
 	out := false
 	if n == 2 {
@@ -34,30 +34,19 @@ func IsPrime(n int) bool {
 	return out
 }
 
-// IsFactor is a function that returns true/fa;se based on the two inputs
+// IsFactor returns true/false based on the two inputs
 func IsFactor(n int, factor int) bool {
 	return (n % factor) == 0
 }
 
 // DigitSum adds the individual digits of a long number
-func DigitSum(value big.Int) big.Int {
-	sum := new(big.Int)
-	sum.SetUint64(0)
-	zero := new(big.Int)
-	zero.SetUint64(0)
-	ten := new(big.Int)
-	ten.SetUint64(10)
-
-	for i := value; i.Cmp(zero) > 0; {
-		rem := new(big.Int)
-		q := new(big.Int)
-		q, rem = i.DivMod(&i, ten, rem)
-		fmt.Println(q, i)
-		sum.Add(sum, rem)
-		// fmt.Printf("quotient: %d | Remainder:%d | Dividend: %d | Sum: %d\n", q, rem, i, sum)
-		i = *q
+func DigitSum(value big.Int) int {
+	digits := GetDigits(value)
+	sum := 0
+	for _, digit := range digits {
+		sum += digit
 	}
-	return *sum
+	return sum
 }
 
 // CalculatePower takes the root and the power to calculate
@@ -84,11 +73,9 @@ func CalculatePower(number uint64, power uint64) big.Int {
 	return *result
 }
 
-func FindDigitCount(number big.Int) big.Int {
-	count := new(big.Int)
+func FindDigitCount(number big.Int) int {
 	digits := GetDigits(number)
-	count.SetInt64(int64(len(digits)))
-	return *count
+	return len(digits)
 }
 
 // GetDigits gives an array of integers that are part of a supplied bigInt number
