@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"strconv"
 )
 
 // IsPrime Checks if a function is prime or not
@@ -58,6 +59,26 @@ func DigitSum(value big.Int) big.Int {
 	}
 	return *sum
 }
+func GetDigits(number big.Int) []int {
+	var nums []int
+	zero := new(big.Int)
+	zero.SetUint64(0)
+	ten := new(big.Int)
+	ten.SetUint64(10)
+	one := new(big.Int)
+	one.SetUint64(1)
+	tmp := new(big.Int)
+	tmp.SetUint64(0)
+	tmp = tmp.Add(tmp, &number)
+	for i := tmp; i.Cmp(zero) > 0; {
+		rem := new(big.Int)
+		_, rem = i.DivMod(i, ten, rem)
+		v, _ := strconv.Atoi(rem.Text(10))
+		nums = append(nums, v)
+	}
+
+	return nums
+}
 
 // CalculatePower takes the root and the power to calculate
 func CalculatePower(number uint64, power uint64) big.Int {
@@ -79,7 +100,7 @@ func CalculatePower(number uint64, power uint64) big.Int {
 			// fmt.Println(index, " is ", index, ", result is ", result)
 		}
 	}
-	fmt.Println("result is : ", result.Text(10))
+	// fmt.Println("result is : ", result.Text(10))
 	return *result
 }
 
