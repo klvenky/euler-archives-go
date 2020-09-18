@@ -27,32 +27,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/klvenky/euler-archives-go/src/common"
 	"math/big"
 )
 
-func findDigitCount(number big.Int) big.Int {
-	count := new(big.Int)
-	count.SetUint64(0)
-	zero := new(big.Int)
-	zero.SetUint64(0)
-	ten := new(big.Int)
-	ten.SetUint64(10)
-	one := new(big.Int)
-	one.SetUint64(1)
-	tmp := new(big.Int)
-	tmp.SetUint64(0)
-	tmp = tmp.Add(tmp, &number)
-	for i := tmp; i.Cmp(zero) > 0; {
-		rem := new(big.Int)
-		q := new(big.Int)
-		q, rem = i.DivMod(i, ten, rem)
-		count.Add(count, one)
-		// fmt.Println("quotient: ", q, "\tRemainder:", rem, "\tDividend:", i, "\t count:", count)
-		i = q
-	}
-	// fmt.Println("returning from counter for ", number, " as ", count, "\n")
-	return *count
-}
 func main() {
 	maxLength := "1000"
 	a := new(big.Int)
@@ -62,7 +40,7 @@ func main() {
 	index := 0
 	for quit := false; quit != true; {
 		index += 1
-		count := findDigitCount(*b)
+		count := common.FindDigitCount(*b)
 		countStr := count.Text(10)
 		tmp := new(big.Int)
 		tmp.SetUint64(0)
@@ -84,5 +62,5 @@ func main() {
 		// fmt.Println("After manipulation a: ", a, "\tb:", b)
 
 	}
-	fmt.Printf("The first Fibanocii number of length %s is %s and the index is %d\n", maxLength, b.Text(10), index)
+	fmt.Printf("The first Fibanocii number of length %s is at the index is %d\n", maxLength, index)
 }

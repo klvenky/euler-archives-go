@@ -82,3 +82,27 @@ func CalculatePower(number uint64, power uint64) big.Int {
 	fmt.Println("result is : ", result.Text(10))
 	return *result
 }
+
+func FindDigitCount(number big.Int) big.Int {
+	count := new(big.Int)
+	count.SetUint64(0)
+	zero := new(big.Int)
+	zero.SetUint64(0)
+	ten := new(big.Int)
+	ten.SetUint64(10)
+	one := new(big.Int)
+	one.SetUint64(1)
+	tmp := new(big.Int)
+	tmp.SetUint64(0)
+	tmp = tmp.Add(tmp, &number)
+	for i := tmp; i.Cmp(zero) > 0; {
+		rem := new(big.Int)
+		q := new(big.Int)
+		q, rem = i.DivMod(i, ten, rem)
+		count.Add(count, one)
+		// fmt.Println("quotient: ", q, "\tRemainder:", rem, "\tDividend:", i, "\t count:", count)
+		i = q
+	}
+	// fmt.Println("returning from counter for ", number, " as ", count, "\n")
+	return *count
+}
