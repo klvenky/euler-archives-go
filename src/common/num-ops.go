@@ -98,3 +98,14 @@ func GetDigits(number big.Int) []int {
 	}
 	return digits
 }
+
+func IsPalindrome(n int) bool {
+	str := strconv.Itoa(n)
+	length := len(str)
+	for index := 0; index < length-1; index++ {
+		if int(str[index]) != int(str[length-index-1]) {
+			return false
+		}
+	}
+	return true
+}

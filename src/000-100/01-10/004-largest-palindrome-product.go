@@ -9,19 +9,9 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 import (
 	"fmt"
-	"strconv"
-)
 
-func isPalindrome(n int) bool {
-	str := strconv.Itoa(n)
-	length := len(str)
-	for index := 0; index < length-1; index++ {
-		if int(str[index]) != int(str[length-index-1]) {
-			return false
-		}
-	}
-	return true
-}
+	"github.com/klvenky/euler-archives-go/src/common"
+)
 
 func main() {
 	// Example problem values
@@ -35,7 +25,7 @@ func main() {
 	for i := max; i >= min; i-- {
 		for j := max; j >= min; j-- {
 			product := i * j
-			isPal := isPalindrome(product)
+			isPal := common.IsPalindrome(product)
 			if product > result && isPal {
 				result = product
 			}
