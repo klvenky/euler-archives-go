@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"math"
 	"math/big"
 	"strconv"
@@ -60,16 +59,12 @@ func CalculatePower(number uint64, power uint64) big.Int {
 		result.SetUint64(1)
 	} else if power == 1 {
 		result.SetUint64(number)
-		fmt.Println(result)
 	} else {
 		result.SetUint64(1)
-		// fmt.Println("Initial value of result is : ", result, " power is :", power)
 		for index := 1; uint64(index) <= power; index++ {
 			result = result.Mul(result, bigNum)
-			// fmt.Println(index, " is ", index, ", result is ", result)
 		}
 	}
-	// fmt.Println("result is : ", result.Text(10))
 	return *result
 }
 
@@ -96,6 +91,10 @@ func GetDigits(number big.Int) []int {
 		v, _ := strconv.Atoi(rem.Text(10))
 		nums = append(nums, v)
 	}
-
-	return nums
+	digits := make([]int, len(nums))
+	numsLen := len(nums)
+	for i := 0; i < numsLen; i += 1 {
+		digits[i] = nums[numsLen-i-1]
+	}
+	return digits
 }
