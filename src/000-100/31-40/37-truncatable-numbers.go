@@ -18,7 +18,6 @@ import (
 )
 
 func isOneWayTruncatablePrime(num int, first bool, removeFromRight bool) bool {
-	//fmt.Println("called one way with ", num)
 	if common.IsPrime(num) {
 		bigNum := new(big.Int)
 		bigNum.SetInt64(int64(num))
@@ -26,16 +25,13 @@ func isOneWayTruncatablePrime(num int, first bool, removeFromRight bool) bool {
 		singleDigit := len(digits) == 1
 		if singleDigit {
 			if first {
-				//fmt.Println("first call & single digit returning false")
 				return false
 			} else {
 				isSingleDigitPrime := common.IsPrime(num)
-				//fmt.Println("not first call checking primeness for ", num, " & result : ", isSingleDigitPrime)
 				return isSingleDigitPrime
 			}
 		} else {
 			genNum := 0
-			//fmt.Println("remove from right :", removeFromRight)
 			for index, digit := range digits {
 				if removeFromRight && index != 0 {
 					genNum *= 10
@@ -43,14 +39,11 @@ func isOneWayTruncatablePrime(num int, first bool, removeFromRight bool) bool {
 				} else if !removeFromRight && index != len(digits)-1 {
 					genNum *= 10
 					genNum += digit
-
 				}
 
 			}
 
-			//fmt.Println("checking oneway truncate for ", genNum)
 			oneWayP := isOneWayTruncatablePrime(genNum, false, removeFromRight)
-			//fmt.Println("is ", genNum, " Prime : ", oneWayP)
 			return oneWayP
 
 		}
@@ -62,10 +55,7 @@ func isTruncatablePrime(num int) bool {
 	bigNum.SetInt64(int64(num))
 	rightPrime := isOneWayTruncatablePrime(num, true, true)
 	if rightPrime {
-		// //fmt.Println(num, " is a right prime ")
 		leftPrime := isOneWayTruncatablePrime(num, true, false)
-		// //fmt.Println(num, " is a left prime ", leftPrime)
-
 		return leftPrime
 	} else {
 		return rightPrime
