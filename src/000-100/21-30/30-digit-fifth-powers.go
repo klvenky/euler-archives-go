@@ -31,7 +31,7 @@ func main() {
 	matches := make([]int, 0)
 	sum := 0
 	// bigNum := common.GetDigits(common.CalculatePower(10, 3))
-	for i := min; i <= max; i += 1 {
+	for i := min; i <= max; i++ {
 		bigNum := new(big.Int)
 		bigNum.SetInt64(int64(i))
 		digits := common.GetDigits(*bigNum)

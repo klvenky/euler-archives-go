@@ -26,7 +26,7 @@ func getCircularNumbers(digits []int) []int {
 			d, copy := clone[0], clone[1:]
 			copy = append(copy, d)
 			num := 0
-			for i := 0; i < len(copy); i += 1 {
+			for i := 0; i < len(copy); i++ {
 				num = num*10 + copy[i]
 			}
 			clone = copy
@@ -41,13 +41,13 @@ func main() {
 	const max int = 1000000
 	count := 0
 	cps := make([]int, max)
-	for i := 2; i < max; i += 1 {
+	for i := 2; i < max; i++ {
 		if common.IsPrime(i) {
 			curr := new(big.Int)
 			curr.SetUint64(uint64(i))
 			digits := common.GetDigits(*curr)
 			if len(digits) == 1 {
-				count += 1
+				count++
 				cps[count-1] = i
 			} else {
 				circularNums := getCircularNumbers(digits)
@@ -57,11 +57,11 @@ func main() {
 				for _, num := range circularNums {
 					prim := common.IsPrime(num)
 					if prim {
-						primes += 1
+						primes++
 					}
 				}
 				if primes == cNumsCount {
-					count += 1
+					count++
 					cps[count-1] = i
 				}
 			}

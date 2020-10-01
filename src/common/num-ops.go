@@ -93,7 +93,7 @@ func GetDigits(number big.Int) []int {
 	}
 	digits := make([]int, len(nums))
 	numsLen := len(nums)
-	for i := 0; i < numsLen; i += 1 {
+	for i := 0; i < numsLen; i++ {
 		digits[i] = nums[numsLen-i-1]
 	}
 	return digits

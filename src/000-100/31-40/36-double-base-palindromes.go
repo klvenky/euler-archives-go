@@ -31,7 +31,7 @@ func isDoublePalindrome(number int) bool {
 func main() {
 	sum := 0
 	const max int = 1000000
-	for i := 1; i < max; i += 1 {
+	for i := 1; i < max; i++ {
 		if isDoublePalindrome(i) {
 			sum += i
 		}

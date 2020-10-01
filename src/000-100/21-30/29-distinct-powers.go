@@ -29,19 +29,19 @@ func main() {
 	var results [arrayLen]string
 
 	index := 0
-	for i := min; i <= max; i += 1 {
-		for j := min; j <= max; j += 1 {
+	for i := min; i <= max; i++ {
+		for j := min; j <= max; j++ {
 			// power := int(math.Pow(float64(i), float64(j)))
 			power := common.CalculatePower(i, j)
 			textPower := power.Text(10)
-			for ai := 0; uint64(ai) < arrayLen; ai += 1 {
+			for ai := 0; uint64(ai) < arrayLen; ai++ {
 				if results[ai] == textPower {
 					break
 				}
 				if uint64(ai) == arrayLen-1 {
 					results[index] = textPower
-					index += 1
-					count += 1
+					index++
+					count++
 					break
 				}
 			}

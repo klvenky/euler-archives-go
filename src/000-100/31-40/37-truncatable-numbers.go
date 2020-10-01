@@ -65,11 +65,11 @@ func isTruncatablePrime(num int) bool {
 func main() {
 	sum := 0
 	max := 11
-	for counter, index := 0, 2; counter < max; index += 1 {
+	for counter, index := 0, 2; counter < max; index++ {
 		if isTruncatablePrime(index) {
 			fmt.Println(index, " is a truncatable prime ")
 			sum += index
-			counter += 1
+			counter++
 		}
 
 	}

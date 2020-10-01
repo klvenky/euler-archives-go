@@ -40,7 +40,7 @@ func main() {
 	b.SetUint64(1)
 	index := 0
 	for quit := false; quit != true; {
-		index += 1
+		index++
 		count := common.FindDigitCount(*b)
 		tmp := new(big.Int)
 		tmp.SetUint64(0)
